@@ -2,6 +2,7 @@ package com.example.quickquotes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,8 +16,14 @@ class MainActivity : AppCompatActivity() {
 
         layoutManager = LinearLayoutManager(this);
         recyclerView.layoutManager = layoutManager;
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                recyclerView.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
-        adapter = QuoteAdapter();
+        adapter = QuoteAdapter(arrayListOf("Testing Quote 1", "Testing Quote 2", "Testing Quote 3", "Testing Quote 4", "Testing Quote 5"));
         recyclerView.adapter = adapter;
     }
 }

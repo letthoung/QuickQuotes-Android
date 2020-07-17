@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 
-class QuoteAdapter : RecyclerView.Adapter<QuoteAdapter.QuoteViewHolder>() {
-    class QuoteViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+class QuoteAdapter(val quotes: ArrayList<String>) : RecyclerView.Adapter<QuoteAdapter.QuoteViewHolder>() {
+    class QuoteViewHolder(v: View): RecyclerView.ViewHolder(v) {
         var view: View = v;
         var quote: String = "";
         fun bindQuote(quote: String){
@@ -21,10 +21,11 @@ class QuoteAdapter : RecyclerView.Adapter<QuoteAdapter.QuoteViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 10;
+        return quotes.count();
     }
 
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
-        holder.bindQuote("Sample quote");
+        var quote = quotes[position];
+        holder.bindQuote(quote);
     }
 }
